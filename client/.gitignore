@@ -40,4 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# macos 숨김파일 포함되지 않도록 설정
 ._*
