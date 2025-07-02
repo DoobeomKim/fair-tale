@@ -3,19 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
-import { Socket, io as socketIO } from 'socket.io-client';
+import { io } from 'socket.io-client';
 
-interface ServerToClientEvents {
-  error: (message: string) => void;
-  'room-full': () => void;
-  'room-joined': (data: { roomId: string; participants: number }) => void;
-}
-
-interface ClientToServerEvents {
-  'join-room': (pin: string) => void;
-}
-
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = socketIO(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4000');
+const socket = io(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4000');
 
 export default function MeetingPage() {
   const router = useRouter();
