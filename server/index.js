@@ -8,14 +8,15 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST']
+    origin: ['https://fair-tale.vercel.app', process.env.CLIENT_URL || 'http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 
 // CORS 설정
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: ['https://fair-tale.vercel.app', process.env.CLIENT_URL || 'http://localhost:3000'],
   methods: ['GET', 'POST'],
   credentials: true
 }));
