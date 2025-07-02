@@ -6,19 +6,26 @@ const cors = require('cors');
 
 const app = express();
 const httpServer = createServer(app);
+
+// CORS 설정을 위한 클라이언트 URL 설정
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
+const VERCEL_URL = 'https://fair-tale.vercel.app';
+
 const io = new Server(httpServer, {
   cors: {
-    origin: ['https://fair-tale.vercel.app', process.env.CLIENT_URL || 'http://localhost:3000'],
+    origin: [VERCEL_URL, CLIENT_URL],
     methods: ['GET', 'POST'],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
   }
 });
 
-// CORS 설정
+// Express CORS 설정
 app.use(cors({
-  origin: ['https://fair-tale.vercel.app', process.env.CLIENT_URL || 'http://localhost:3000'],
+  origin: [VERCEL_URL, CLIENT_URL],
   methods: ['GET', 'POST'],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // 룸 상태 관리
