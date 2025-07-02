@@ -35,7 +35,7 @@ export default function MeetingPage() {
       setIsLoading(false);
     });
 
-    socket.on('room-joined', (data: { roomId: string; participants: number }) => {
+    socket.on('room-joined', () => {
       router.push(`/meeting/${pin}`);
     });
 

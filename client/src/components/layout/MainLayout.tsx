@@ -1,23 +1,27 @@
-import { ReactNode } from 'react';
+import Link from 'next/link';
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-indigo-600">
-              Fair-Tale
-            </a>
+    <div className="min-h-screen bg-gray-100">
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex">
+              <Link href="/" className="flex items-center">
+                <span className="text-xl font-bold text-gray-800">Fair-Tale</span>
+              </Link>
+            </div>
           </div>
-        </nav>
-      </header>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
+        </div>
+      </nav>
+      <main className="py-10">
+        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          {children}
+        </div>
       </main>
     </div>
   );
