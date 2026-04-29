@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket.IO Test</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Socket.IO Connection Test</h1>
+    <button id="connect">Connect</button>
+    <button id="disconnect">Disconnect</button>
+    <div id="status">Disconnected</div>
+    <div id="logs"></div>
+
+    <script>
+        const socket = io('http://localhost:4001', {
+            autoConnect: false
+        });
+
+        const status = document.getElementById('status');
+        const logs = document.getElementById('logs');
+
+        function addLog(message) {
+            logs.innerHTML += '<p>' + new Date().toISOString() + ': ' + message + '</p>';
+            console.log(message);
+        }
+
+        socket.on('connect', () => {
+            status.textContent = 'Connected - ' + socket.id;
+            addLog('Connected to server with ID: ' + socket.id);
+        });
+
+        socket.on('disconnect', () => {
+            status.textContent = 'Disconnected';
+            addLog('Disconnected from server');
+        });
+
+        socket.on('connect_error', (error) => {
+            status.textContent = 'Connection Error';
+            addLog('Connection error: ' + error.message);
+        });
+
+        document.getElementById('connect').addEventListener('click', () => {
+            addLog('Attempting to connect...');
+            socket.connect();
+        });
+
+        document.getElementById('disconnect').addEventListener('click', () => {
+            socket.disconnect();
+        });
+    </script>
+</body>
+</html> 

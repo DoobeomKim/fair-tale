@@ -1,0 +1,18 @@
+<svg width="520" height="128" viewBox="0 0 520 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fairtale logo</title>
+  <desc id="desc">Fairtale wordmark with an open gateway and path symbol.</desc>
+  <g fill="#153156">
+    <path d="M30 96V22H98V96H86V34H42V96H30Z"/>
+    <path d="M52 82H76L106 110H22L52 82Z"/>
+    <path d="M82 42L85.3 50.7L94 54L85.3 57.3L82 66L78.7 57.3L70 54L78.7 50.7L82 42Z"/>
+  </g>
+  <text
+    x="154"
+    y="84"
+    fill="#153156"
+    font-family="Pretendard, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="72"
+    font-weight="700"
+    letter-spacing="-1"
+  >Fairtale</text>
+</svg>

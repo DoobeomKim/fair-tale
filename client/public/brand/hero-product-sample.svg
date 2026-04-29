@@ -1,0 +1,79 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="780" y2="1160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3FAF8"/>
+      <stop offset="0.52" stop-color="#F7F9FC"/>
+      <stop offset="1" stop-color="#EEF3F8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(450 430) rotate(90) scale(520 420)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stone" x1="240" y1="660" x2="660" y2="890" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8E5E1"/>
+      <stop offset="0.5" stop-color="#DCD6D0"/>
+      <stop offset="1" stop-color="#CFC8C1"/>
+    </linearGradient>
+    <linearGradient id="glassBottle" x1="340" y1="468" x2="468" y2="826" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFEFF" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#DCE8EE" stop-opacity="0.76"/>
+    </linearGradient>
+    <linearGradient id="pumpBottle" x1="500" y1="392" x2="616" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#E3EAF0" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="blurSoft" x="146" y="160" width="608" height="910" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="shadowLg" x="180" y="530" width="540" height="440" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.16 0 0 0 0 0.2 0 0 0 0 0.27 0 0 0 0.2 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+    </filter>
+    <filter id="shadowSm" x="248" y="330" width="404" height="614" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="10"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.18 0 0 0 0 0.24 0 0 0 0 0.31 0 0 0 0.2 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <ellipse cx="450" cy="1120" rx="300" ry="44" fill="#CFD6DE" fill-opacity="0.46"/>
+
+  <g filter="url(#blurSoft)" opacity="0.75">
+    <circle cx="276" cy="370" r="120" fill="#DAEEE9"/>
+    <circle cx="640" cy="320" r="96" fill="#E7EDF4"/>
+  </g>
+
+  <rect width="900" height="1200" fill="url(#glow)"/>
+
+  <g filter="url(#shadowLg)">
+    <path d="M250 700C250 668 276 642 308 642H592C624 642 650 668 650 700V842H250V700Z" fill="#DFD9D2"/>
+    <ellipse cx="450" cy="842" rx="200" ry="30" fill="#C8C1B9"/>
+  </g>
+
+  <g filter="url(#shadowSm)">
+    <rect x="346" y="486" width="114" height="292" rx="34" fill="url(#glassBottle)"/>
+    <rect x="370" y="462" width="66" height="40" rx="14" fill="#F4FAFD" fill-opacity="0.92"/>
+    <rect x="388" y="438" width="30" height="28" rx="8" fill="#EDF5FA"/>
+    <rect x="356" y="552" width="94" height="6" rx="3" fill="#C9DDE4" fill-opacity="0.8"/>
+    <rect x="356" y="572" width="74" height="6" rx="3" fill="#C9DDE4" fill-opacity="0.62"/>
+    <rect x="356" y="592" width="82" height="6" rx="3" fill="#C9DDE4" fill-opacity="0.5"/>
+  </g>
+
+  <g filter="url(#shadowSm)">
+    <rect x="496" y="420" width="104" height="340" rx="30" fill="url(#pumpBottle)"/>
+    <rect x="522" y="352" width="52" height="76" rx="14" fill="#F5FAFD"/>
+    <rect x="510" y="334" width="76" height="18" rx="9" fill="#E7EFF6"/>
+    <rect x="510" y="326" width="94" height="10" rx="5" fill="#DEE8F1"/>
+    <rect x="514" y="506" width="68" height="6" rx="3" fill="#CADCE6" fill-opacity="0.74"/>
+    <rect x="514" y="526" width="56" height="6" rx="3" fill="#CADCE6" fill-opacity="0.58"/>
+  </g>
+
+  <path d="M216 874H684" stroke="#EEF2F6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M260 908H640" stroke="#E7EDF3" stroke-width="4" stroke-linecap="round"/>
+</svg>

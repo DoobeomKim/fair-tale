@@ -1,0 +1,9 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fairtale mark</title>
+  <desc id="desc">A minimal open gateway and path symbol with a small star.</desc>
+  <g fill="#153156">
+    <path d="M30 96V22H98V96H86V34H42V96H30Z"/>
+    <path d="M52 82H76L106 110H22L52 82Z"/>
+    <path d="M82 42L85.3 50.7L94 54L85.3 57.3L82 66L78.7 57.3L70 54L78.7 50.7L82 42Z"/>
+  </g>
+</svg>
