@@ -48,3 +48,29 @@ body {
   font-family: var(--font-title-korean);
   font-weight: 700;
 }
+
+.shine-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--shine-color, rgba(255, 255, 255, 0.34)), transparent);
+  transform: translateX(-120%);
+  transition: transform 900ms ease;
+  pointer-events: none;
+}
+
+.shine-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .shine-button:hover::before {
+    transform: translateX(120%);
+  }
+}

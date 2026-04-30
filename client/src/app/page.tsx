@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ReportPreview } from '@/components/landing/ReportPreview';
 
 type IconName =
   | 'document'
@@ -17,29 +18,6 @@ type IconName =
   | 'globe'
   | 'arrow'
   | 'check';
-
-const outcomes = [
-  {
-    title: '영문 제품 소개',
-    description: '해외 바이어가 이해하기 쉬운 제품 소개 문구를 정리합니다.',
-    icon: 'document',
-  },
-  {
-    title: '판매 포인트 정리',
-    description: '제품의 차별점과 시장성을 바이어 관점으로 다시 구성합니다.',
-    icon: 'diamond',
-  },
-  {
-    title: '추천 바이어 유형',
-    description: '제품과 어울리는 바이어, 유통사, 수입사 유형을 제안합니다.',
-    icon: 'users',
-  },
-  {
-    title: '상담 준비 체크리스트',
-    description: '첫 미팅 전에 준비해야 할 자료와 질문을 정리합니다.',
-    icon: 'clipboard',
-  },
-] satisfies Array<{ title: string; description: string; icon: IconName }>;
 
 const processSteps = [
   { title: '제품 정보 등록', icon: 'box' },
@@ -82,9 +60,9 @@ export default function Home() {
             </button>
             <a
               href="#contact"
-              className="rounded-md bg-[#153156] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#102746]"
+              className="shine-button rounded-md bg-[#153156] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#102746]"
             >
-              제품 검토 요청
+              <span>제품 검토 요청</span>
             </a>
           </div>
         </div>
@@ -94,7 +72,7 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-white to-transparent" />
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-8 pt-16 lg:grid-cols-[0.92fr_1.08fr] lg:px-8 lg:pb-12 lg:pt-20">
           <div className="relative z-10 flex flex-col lg:justify-start">
-            <p className="mb-4 inline-flex w-fit rounded-full border border-[#dfe5ee] bg-white/80 px-3.5 py-1.5 text-xs font-bold text-[#12978b] shadow-sm lg:text-sm">
+            <p className="mb-4 inline-flex w-fit rounded-full border border-[#dfe5ee] bg-white/80 px-3.5 py-1.5 text-xs font-medium text-[#12978b] shadow-sm lg:text-sm">
               해외진출 첫 관문
             </p>
             <h1 className="title-korean max-w-2xl text-[39px] font-normal leading-[1.18] tracking-[-0.028em] text-[#153156] lg:text-[46px]">
@@ -111,15 +89,15 @@ export default function Home() {
             <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
               <a
                 href="#contact"
-                className="rounded-md bg-[#153156] px-5 py-3.5 text-center text-sm font-bold text-white shadow-[0_18px_36px_rgba(21,49,86,0.18)] transition hover:bg-[#102746] lg:text-base"
+                className="shine-button rounded-md bg-[#153156] px-5 py-3.5 text-center text-sm font-semibold text-white shadow-[0_18px_36px_rgba(21,49,86,0.18)] transition hover:bg-[#102746] lg:text-base"
               >
-                무료로 제품 검토 요청하기
+                <span>무료로 제품 검토 요청하기</span>
               </a>
               <a
                 href="#outcomes"
-                className="rounded-md border border-[#153156] bg-white px-5 py-3.5 text-center text-sm font-bold text-[#153156] transition hover:bg-[#f1f5f9] lg:text-base"
+                className="shine-button rounded-md border border-[#153156] bg-white px-5 py-3.5 text-center text-sm font-semibold text-[#153156] transition hover:bg-[#f1f5f9] [--shine-color:rgba(21,49,86,0.14)] lg:text-base"
               >
-                샘플 결과물 보기
+                <span>샘플 결과물 보기</span>
               </a>
             </div>
             <p className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#536176] lg:text-sm">
@@ -144,9 +122,9 @@ export default function Home() {
               <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <IconBadge icon="clipboard" size="sm" shape="square" />
-                  <h2 className="text-xl font-extrabold">제품 검토 리포트</h2>
+                  <h2 className="text-xl font-semibold">제품 검토 리포트</h2>
                 </div>
-                <span className="rounded-full border border-white/60 bg-white/55 px-4 py-2 text-sm font-bold text-[#536176] shadow-sm backdrop-blur-md">
+                <span className="rounded-full border border-white/60 bg-white/55 px-4 py-2 text-sm font-medium text-[#536176] shadow-sm backdrop-blur-md">
                   AI 기반 분석
                 </span>
               </div>
@@ -160,7 +138,7 @@ export default function Home() {
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <h3 className="mt-3 text-base font-extrabold lg:text-lg">프리미엄 생활용품 라인</h3>
+                  <h3 className="mt-3 text-base font-semibold lg:text-lg">프리미엄 생활용품 라인</h3>
                   <p className="mt-1 text-xs font-medium text-[#536176] lg:text-sm">홈리빙 · 소비재</p>
                 </div>
 
@@ -195,7 +173,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-4 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2 rounded-2xl border border-white/60 bg-white/55 px-4 py-3 text-xs font-bold shadow-sm backdrop-blur-xl lg:text-sm">
+              <div className="mt-4 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2 rounded-2xl border border-white/60 bg-white/55 px-4 py-3 text-xs font-medium shadow-sm backdrop-blur-xl lg:text-sm">
                 <StepLabel icon="box" label="제품 등록" />
                 <IconGlyph icon="arrow" className="h-4 w-4 text-[#8a96a8]" />
                 <StepLabel icon="review" label="Fairtale 검토" />
@@ -219,7 +197,7 @@ export default function Home() {
               />
             </span>
             <div>
-              <h2 className="text-2xl font-extrabold">아시아 공급사를 찾고 계신가요?</h2>
+              <h2 className="text-2xl font-semibold">아시아 공급사를 찾고 계신가요?</h2>
               <p className="mt-1 max-w-3xl text-base leading-7 text-[#536176]">
                 관심 카테고리를 알려주시면 Fairtale이 적합한 공급사 후보를 큐레이션해드립니다.
               </p>
@@ -227,7 +205,7 @@ export default function Home() {
           </div>
           <a
             href="#contact"
-            className="rounded-md bg-[#12978b] px-6 py-3 text-center text-sm font-bold text-white shadow-sm transition hover:bg-[#0e7d73]"
+            className="shine-button rounded-md bg-[#12978b] px-6 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-[#0e7d73]"
           >
             <span>바이어로 시작하기</span>
             <IconGlyph icon="arrow" className="ml-2 inline-block h-4 w-4 align-[-2px]" />
@@ -235,30 +213,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="outcomes" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <section id="outcomes" className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="text-center">
-          <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-[#12978b]">What you receive</p>
-          <h2 className="title-korean mt-3 text-4xl font-normal tracking-[-0.025em]">등록 후 받을 수 있는 것</h2>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#12978b]">What you receive</p>
+          <h2 className="title-korean mt-3 text-4xl font-normal tracking-[-0.025em]">제품 검토 후 이런 리포트를 받습니다</h2>
+          <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-[#536176] lg:text-lg">
+            제품 정보를 등록하면, 해외 바이어 상담 가능한 자료로 정리해드립니다.
+          </p>
         </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {outcomes.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-white/80 bg-white/65 p-6 shadow-[0_18px_50px_rgba(21,49,86,0.08)] backdrop-blur-xl"
-            >
-              <IconBadge icon={item.icon} size="lg" />
-              <h3 className="mt-3 text-xl font-extrabold">{item.title}</h3>
-              <p className="mt-1.5 text-sm leading-6 text-[#536176]">{item.description}</p>
-            </div>
-          ))}
-        </div>
+
+        <ReportPreview />
       </section>
 
       <section id="process" className="border-y border-[#dfe5ee] bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-[#12978b]">Process</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#12978b]">Process</p>
               <h2 className="title-korean mt-3 text-4xl font-normal tracking-[-0.025em]">어렵지 않게, 단계별로 진행합니다</h2>
               <p className="mt-2.5 text-lg leading-8 text-[#536176]">
                 처음부터 복잡한 계정을 만들 필요 없이 제품 정보를 보내주시면 Fairtale 팀이 검토하고 상담 준비 자료를 정리합니다.
@@ -269,9 +240,9 @@ export default function Home() {
                 <div key={step.title} className="rounded-2xl border border-[#dfe5ee] bg-[#f7f9fc] p-6">
                   <div className="flex items-center justify-between gap-4">
                     <IconBadge icon={step.icon} size="md" shape="square" />
-                    <span className="text-sm font-black text-[#12978b]">0{index + 1}</span>
+                    <span className="text-sm font-semibold text-[#12978b]">0{index + 1}</span>
                   </div>
-                  <h3 className="mt-2.5 text-xl font-extrabold">{step.title}</h3>
+                  <h3 className="mt-2.5 text-xl font-semibold">{step.title}</h3>
                 </div>
               ))}
             </div>
@@ -281,7 +252,7 @@ export default function Home() {
 
       <section id="partners" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
         <div className="rounded-[28px] bg-[#153156] p-8 text-white md:p-12">
-          <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-[#7bd4cc]">Partner network</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7bd4cc]">Partner network</p>
           <div className="mt-4 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end">
             <div>
               <h2 className="title-korean text-4xl font-normal tracking-[-0.025em]">바이어를 만나는 것에서 끝나지 않습니다</h2>
@@ -291,7 +262,7 @@ export default function Home() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {partnerItems.map((item) => (
-                <div key={item.label} className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-bold backdrop-blur">
+                <div key={item.label} className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-medium backdrop-blur">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-[#7bd4cc]">
                     <IconGlyph icon={item.icon} className="h-4 w-4" />
                   </span>
@@ -306,7 +277,7 @@ export default function Home() {
       <section id="contact" className="bg-white px-6 py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-[#12978b]">Request review</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#12978b]">Request review</p>
             <h2 className="title-korean mt-3 text-4xl font-normal tracking-[-0.025em]">무료 제품 검토를 요청하세요</h2>
             <p className="mt-2.5 text-lg leading-8 text-[#536176]">
               제출 후 Fairtale 팀이 내용을 검토하고, 해외 바이어 상담 준비에 필요한 자료를 정리해드립니다.
@@ -322,14 +293,14 @@ export default function Home() {
               <Input label="희망 시장" placeholder="예: 독일, 유럽" />
             </div>
             <label className="mt-4 block">
-              <span className="text-sm font-bold">제품 설명</span>
+              <span className="text-sm font-medium">제품 설명</span>
               <textarea
                 className="mt-2 min-h-32 w-full rounded-md border border-[#dfe5ee] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#12978b]"
                 placeholder="제품 특징, 타깃 고객, 현재 판매 채널 등을 간단히 적어주세요."
               />
             </label>
-            <button type="button" className="mt-5 w-full rounded-md bg-[#153156] px-6 py-4 text-base font-bold text-white transition hover:bg-[#102746]">
-              무료 제품 검토 요청하기
+            <button type="button" className="shine-button mt-5 w-full rounded-md bg-[#153156] px-6 py-4 text-base font-semibold text-white transition hover:bg-[#102746]">
+              <span>무료 제품 검토 요청하기</span>
             </button>
           </form>
         </div>
@@ -355,7 +326,7 @@ function ReportCard({ icon, label, text }: { icon: IconName; label: string; text
     <div className="flex min-h-[138px] gap-2.5 rounded-2xl border border-white/60 bg-white/58 p-3.5 shadow-[0_14px_36px_rgba(21,49,86,0.07)] backdrop-blur-xl">
       <IconBadge icon={icon} size="sm" shape="square" className="mt-0.5 shrink-0" />
       <div>
-        <p className="text-base font-extrabold">{label}</p>
+        <p className="text-base font-semibold">{label}</p>
         <div className="mt-1 text-[15px] leading-7 text-[#536176]">{text}</div>
       </div>
     </div>
@@ -560,7 +531,7 @@ function IconGlyph({ icon, className = 'h-5 w-5' }: { icon: IconName; className?
 function Input({ label, placeholder }: { label: string; placeholder: string }) {
   return (
     <label className="block">
-      <span className="text-sm font-bold">{label}</span>
+      <span className="text-sm font-medium">{label}</span>
       <input
         className="mt-2 w-full rounded-md border border-[#dfe5ee] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#12978b]"
         placeholder={placeholder}
