@@ -112,7 +112,7 @@ export function ReportPreview() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_10%,rgba(230,248,244,0.82),rgba(255,255,255,0)_32%),linear-gradient(135deg,rgba(255,255,255,0.72),rgba(247,249,252,0.36))]" />
 
       <aside className="relative rounded-2xl border border-white/70 bg-white/62 p-4 shadow-[0_16px_42px_rgba(21,49,86,0.07)] backdrop-blur-xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#12978b]">Report sections</p>
+        <p className="ft-caption font-semibold uppercase tracking-[0.18em] text-[#12978b]">Report sections</p>
         <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
           {reportSections.map((section) => {
             const isActive = activeSection === section.id;
@@ -122,15 +122,15 @@ export function ReportPreview() {
                 key={section.id}
                 type="button"
                 onClick={() => setActiveSection(section.id)}
-                className={`relative flex items-center gap-3 rounded-lg border px-3.5 py-3 text-left transition ${
+                className={`relative grid grid-cols-[54px_1fr] items-center overflow-hidden rounded-lg border px-3.5 py-3 text-left transition ${
                   isActive
-                    ? 'border-[#12978b]/25 bg-[#e6f8f4] text-[#153156] shadow-sm'
+                    ? 'active-report-section border-[#12978b]/25 bg-[#e6f8f4] text-[#153156] shadow-sm'
                     : 'border-white/70 bg-white/54 text-[#536176] hover:border-[#12978b]/18 hover:bg-white/80'
                 }`}
               >
-                {isActive && <span className="absolute bottom-2 left-0 top-2 w-1 rounded-r-full bg-[#12978b]" />}
-                <span className={`w-8 shrink-0 text-base font-semibold ${isActive ? 'text-[#12978b]' : 'text-[#8a96a8]'}`}>{section.number}</span>
-                <span className="text-sm font-medium">{section.title}</span>
+                {isActive && <span className="absolute bottom-2 left-0 top-2 z-[2] w-1 rounded-r-full bg-[#12978b]" />}
+                <span className={`relative z-[1] text-center text-base font-medium ${isActive ? 'text-[#12978b]' : 'text-[#8a96a8]'}`}>{section.number}</span>
+                <span className="relative z-[1] text-sm font-medium">{section.title}</span>
               </button>
             );
           })}
@@ -141,7 +141,7 @@ export function ReportPreview() {
         <div className="pointer-events-none absolute inset-x-5 top-0 h-px bg-white/90" />
         <div className="flex flex-col gap-3 pb-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h3 className="text-2xl font-semibold">샘플 제품 검토 리포트</h3>
+            <h3 className="ft-panel-title">샘플 제품 검토 리포트</h3>
             <p className="mt-0.5 text-sm font-medium text-[#536176]">{activeReport.title} 상세 미리보기</p>
           </div>
           <div className="flex gap-2 text-xs font-medium text-[#536176]">
@@ -155,8 +155,8 @@ export function ReportPreview() {
         {activeSection === 'buyers' && <BuyerTypeReport />}
         {activeSection === 'checklist' && <ChecklistReport />}
 
-        <p className="mt-4 flex items-start gap-2 rounded-lg border border-[#dfe5ee]/80 bg-white/64 px-3.5 py-3 text-sm leading-5 text-[#536176]">
-          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#12978b]/25 bg-[#e6f8f4] text-[11px] font-medium text-[#12978b]">i</span>
+        <p className="ft-small mt-4 flex items-start gap-2 rounded-lg border border-[#dfe5ee]/80 bg-white/64 px-3.5 py-3 text-[#536176]">
+          <span className="ft-caption flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#12978b]/25 bg-[#e6f8f4] font-medium text-[#12978b]">i</span>
           <span>위 리포트는 실제 검토 예시입니다. 제품과 시장 상황에 따라 내용은 달라질 수 있습니다.</span>
         </p>
       </div>
@@ -172,7 +172,7 @@ function ChecklistReport() {
           상담 준비 상태 요약
           <Tooltip text="현재 제품 정보만으로 첫 바이어 상담이 가능한지, 추가 확인이 필요한 항목은 무엇인지 요약합니다." />
         </div>
-        <p className="mt-1 text-[13px] leading-5 text-[#153156]">
+        <p className="ft-report-text mt-1 text-[#153156]">
           첫 상담은 가능하지만, 가격 조건과 인증 자료는 추가 확인이 필요합니다.
         </p>
       </div>
@@ -188,7 +188,7 @@ function ChecklistReport() {
             } border-l-4`}
           >
             <p className={`text-sm font-medium ${column.tone === 'risk' ? 'text-[#8a5a2f]' : 'text-[#153156]'}`}>{column.title}</p>
-            <ul className="mt-2 space-y-1.5 text-[13px] leading-5 text-[#536176]">
+            <ul className="ft-report-text mt-2 space-y-1.5 text-[#536176]">
               {column.items.map((item) => (
                 <li key={item} className="flex gap-2">
                   <span className={`mt-[9px] h-1 w-1 shrink-0 rounded-full ${column.tone === 'risk' ? 'bg-[#d38a45]/70' : 'bg-[#12978b]/55'}`} />
@@ -202,10 +202,10 @@ function ChecklistReport() {
 
       <div className="mt-3 rounded-xl border border-[#dfe5ee]/80 bg-white/78 px-3.5 py-3 shadow-[0_14px_34px_rgba(21,49,86,0.05)]">
         <p className="text-sm font-medium text-[#12978b]">상담 전 우선 준비할 것</p>
-        <p className="mt-1 text-[13px] leading-5 text-[#153156]">
+        <p className="ft-report-text mt-1 text-[#153156]">
           우선 가격표, 샘플 발송 조건, 소재 인증 여부를 확인하면 첫 바이어 상담 가능성이 높아집니다.
         </p>
-        <p className="mt-1.5 border-t border-[#dfe5ee]/75 pt-2 text-xs leading-5 text-[#536176]">
+        <p className="ft-caption mt-1.5 border-t border-[#dfe5ee]/75 pt-2 text-[#536176]">
           필요한 자료는 Fairtale과 함께 하나씩 정리해나갈 수 있습니다.
         </p>
       </div>
@@ -221,7 +221,7 @@ function BuyerTypeReport() {
           추천 기준 요약
           <Tooltip text="제품 특성과 현재 준비 수준을 기준으로 우선 접근할 바이어 유형을 좁혀 정리합니다." />
         </div>
-        <p className="mt-1 text-[13px] leading-5 text-[#153156]">
+        <p className="ft-report-text mt-1 text-[#153156]">
           온라인 판매 적합성, K-lifestyle 스토리 활용 가능성, 소량 테스트 판매 가능성을 기준으로 우선순위를 정리했습니다.
         </p>
       </div>
@@ -235,13 +235,13 @@ function BuyerTypeReport() {
           {recommendedBuyerTypes.map((buyer) => (
             <div key={buyer.rank} className="flex h-full min-h-[184px] flex-col rounded-xl border border-[#dfe5ee]/85 bg-white/72 p-3 shadow-[0_12px_30px_rgba(21,49,86,0.045)]">
               <div className="flex items-start justify-between gap-3">
-                <p className="text-sm font-medium leading-5 text-[#153156]">{buyer.title}</p>
-                <span className="shrink-0 rounded-full border border-[#12978b]/25 bg-[#e6f8f4] px-2 py-1 text-[11px] font-medium text-[#0e7d73]">
+                <p className="ft-small font-medium text-[#153156]">{buyer.title}</p>
+                <span className="ft-caption shrink-0 rounded-full border border-[#12978b]/25 bg-[#e6f8f4] px-2 py-1 font-medium text-[#0e7d73]">
                   {buyer.rank}
                 </span>
               </div>
-              <p className="mt-2 text-[13px] leading-5 text-[#536176]">{buyer.reason}</p>
-              <div className="mt-auto min-h-[54px] rounded-md bg-[#f7f9fc]/85 px-2.5 py-1.5 text-xs leading-5 text-[#0e7d73]">
+              <p className="ft-report-text mt-2 text-[#536176]">{buyer.reason}</p>
+              <div className="ft-caption mt-auto min-h-[54px] rounded-md bg-[#f7f9fc]/85 px-2.5 py-1.5 text-[#0e7d73]">
                 상담 포인트: {buyer.point}
               </div>
             </div>
@@ -254,8 +254,8 @@ function BuyerTypeReport() {
         <div className="mt-2 grid gap-2 lg:grid-cols-2">
           {lowerPriorityBuyerTypes.map((buyer) => (
             <div key={buyer.title} className="rounded-lg border border-[#dfe5ee]/75 bg-[#f7f9fc]/65 px-3 py-2.5">
-              <p className="text-[13px] font-medium text-[#153156]">{buyer.title}</p>
-              <p className="mt-1 text-xs leading-5 text-[#536176]">{buyer.reason}</p>
+              <p className="ft-report-text font-medium text-[#153156]">{buyer.title}</p>
+              <p className="ft-caption mt-1 text-[#536176]">{buyer.reason}</p>
             </div>
           ))}
         </div>
@@ -272,19 +272,19 @@ function SalesPointReport() {
           핵심 제안 방향
           <Tooltip text="이 제품을 해외 바이어에게 어떤 시장 포지션으로 제안할지 정리한 내부 전략 요약입니다." />
         </div>
-        <p className="mt-1 text-[15px] font-medium leading-6 text-[#153156]">
+        <p className="ft-body mt-1 font-medium text-[#153156]">
           K-food 문화를 활용한 온라인 친화형 재사용 런치박스 카테고리로 제안
         </p>
       </div>
 
       <div className="mt-3 overflow-hidden rounded-xl border border-[#dfe5ee]/90 bg-white/66">
-        <div className="grid grid-cols-[0.23fr_0.43fr_0.34fr] border-b border-[#dfe5ee]/90 bg-[#f7f9fc]/70 text-[13px] font-medium text-[#153156]">
+        <div className="ft-report-text grid grid-cols-[0.23fr_0.43fr_0.34fr] border-b border-[#dfe5ee]/90 bg-[#f7f9fc]/70 font-medium text-[#153156]">
           <div className="border-r border-[#dfe5ee]/90 px-3 py-2.5">판매 포인트</div>
           <div className="border-r border-[#dfe5ee]/90 px-3 py-2.5">바이어가 관심 가질 이유</div>
           <div className="px-3 py-2.5">상담 전 보완하면 좋은 자료</div>
         </div>
         {salesPointRows.map((row) => (
-          <div key={row.point} className="grid grid-cols-[0.23fr_0.43fr_0.34fr] border-b border-[#dfe5ee]/80 text-[13px] leading-5 last:border-b-0">
+          <div key={row.point} className="ft-report-text grid grid-cols-[0.23fr_0.43fr_0.34fr] border-b border-[#dfe5ee]/80 last:border-b-0">
             <div className="border-r border-[#dfe5ee]/80 px-3 py-2.5 font-medium text-[#153156]">{row.point}</div>
             <div className="border-r border-[#dfe5ee]/80 px-3 py-2.5 text-[#536176]">{row.reason}</div>
             <div className="bg-[#e6f8f4]/28 px-3 py-2.5 text-[#0e7d73]">{row.prep}</div>
@@ -297,7 +297,7 @@ function SalesPointReport() {
           우선 강조 메시지
           <Tooltip text="바이어 상담이나 제품 소개에서 실제로 먼저 꺼낼 수 있는 세일즈 문장입니다." />
         </div>
-        <p className="mt-1 text-[13px] leading-5 text-[#153156]">
+        <p className="ft-report-text mt-1 text-[#153156]">
           이 제품은 한식 도시락 문화에서 출발했지만, 해외 시장에서는 접이식 보관성과 재사용 가능한 스테인리스 소재를 갖춘 컴팩트 런치박스 세트로 소개하는 것이 적합합니다.
         </p>
       </div>
@@ -309,17 +309,17 @@ function EnglishIntroReport() {
   return (
     <>
       <div className="mt-2 overflow-hidden rounded-xl border border-[#dfe5ee]/90 bg-white/66">
-        <div className="grid grid-cols-[0.17fr_0.43fr_0.4fr] border-b border-[#dfe5ee]/90 bg-[#f7f9fc]/70 text-center text-sm font-medium">
+        <div className="ft-small grid grid-cols-[0.17fr_0.43fr_0.4fr] border-b border-[#dfe5ee]/90 bg-[#f7f9fc]/70 text-center font-medium">
           <div className="border-r border-[#dfe5ee]/90 px-3 py-3">구분</div>
           <div className="border-r border-[#dfe5ee]/90 px-3 py-3">원본</div>
           <div className="px-3 py-3 text-[#12978b]">바이어용</div>
         </div>
-        <div className="grid grid-cols-[0.17fr_0.43fr_0.4fr] border-b border-[#dfe5ee]/90 text-sm">
+        <div className="ft-small grid grid-cols-[0.17fr_0.43fr_0.4fr] border-b border-[#dfe5ee]/90">
           <div className="border-r border-[#dfe5ee]/90 px-3 py-3 text-center font-medium">제품명</div>
           <div className="border-r border-[#dfe5ee]/90 px-3 py-3 text-center font-medium">접이식 스테인리스 김밥 도시락 세트</div>
           <div className="bg-[#e6f8f4]/38 px-3 py-3 text-center font-medium text-[#0e7d73]">Foldable Stainless Steel Lunchbox Set</div>
         </div>
-        <div className="grid grid-cols-[0.17fr_0.43fr_0.4fr] text-sm">
+        <div className="ft-small grid grid-cols-[0.17fr_0.43fr_0.4fr]">
           <div className="border-r border-[#dfe5ee]/90 px-3 py-3 text-center font-medium">카테고리</div>
           <div className="border-r border-[#dfe5ee]/90 px-3 py-3 text-center font-medium">주방 · 생활용품</div>
           <div className="bg-[#e6f8f4]/38 px-3 py-3 text-center font-medium text-[#0e7d73]">Kitchenware · Lifestyle Goods</div>
@@ -329,7 +329,7 @@ function EnglishIntroReport() {
       <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
         <div className="rounded-xl border border-[#dfe5ee]/80 bg-white/78 p-4">
           <p className="text-base font-medium text-[#153156]">Before</p>
-          <p className="mt-3 text-sm leading-7 text-[#153156] lg:text-base">
+          <p className="ft-body mt-3 text-[#153156]">
             집에서 싸 먹는 김밥 감성을 그대로 담은, 접어서 보관하기 편한 스테인리스 도시락 세트입니다.
           </p>
         </div>
@@ -342,7 +342,7 @@ function EnglishIntroReport() {
 
         <div className="rounded-xl border border-[#12978b]/35 bg-white/82 p-4 shadow-[0_14px_34px_rgba(18,151,139,0.08)]">
           <p className="text-base font-medium text-[#0e7d73]">Buyer-ready English Introduction</p>
-          <p className="mt-3 text-sm leading-7 text-[#153156] lg:text-base">
+          <p className="ft-body mt-3 text-[#153156]">
             A compact stainless steel lunchbox set inspired by Korean home-style meal culture, designed for easy storage, reusable daily use, and online-friendly gift packaging.
           </p>
         </div>
@@ -350,7 +350,7 @@ function EnglishIntroReport() {
 
       <div className="mt-4 border-t border-[#dfe5ee]/80 pt-4">
         <p className="text-sm font-medium text-[#12978b]">재구성 포인트</p>
-        <div className="mt-3 grid gap-3 text-sm leading-6 text-[#536176] lg:grid-cols-3">
+        <div className="ft-small mt-3 grid gap-3 text-[#536176] lg:grid-cols-3">
           <CheckItem text="“김밥 감성”을 직역하지 않고 해외 바이어가 이해할 문화 맥락으로 재구성" />
           <CheckItem text="제품 용도를 김밥 전용이 아닌 lunchbox set으로 확장" bordered />
           <CheckItem text="보관 편의성, 재사용성, 선물 패키징 등 검토 요소 추가" />
@@ -363,8 +363,8 @@ function EnglishIntroReport() {
 function PlaceholderReport({ title, text }: { title: string; text: string }) {
   return (
     <div className="mt-2 rounded-xl border border-[#dfe5ee]/80 bg-white/72 p-8 text-center">
-      <p className="text-lg font-medium text-[#153156]">{title}</p>
-      <p className="mt-2 text-sm leading-6 text-[#536176]">{text}</p>
+      <p className="ft-card-title text-[#153156]">{title}</p>
+      <p className="ft-small mt-2 text-[#536176]">{text}</p>
     </div>
   );
 }
@@ -379,7 +379,7 @@ function Tooltip({ text }: { text: string }) {
       >
         i
       </button>
-      <span className="pointer-events-none absolute left-1/2 top-6 z-20 w-64 -translate-x-1/2 rounded-md border border-[#dfe5ee] bg-[#153156] px-3 py-2 text-xs font-normal leading-5 text-white opacity-0 shadow-lg shadow-black/10 transition group-hover:opacity-100 group-focus-within:opacity-100">
+      <span className="ft-caption pointer-events-none absolute left-1/2 top-6 z-20 w-64 -translate-x-1/2 rounded-md border border-[#dfe5ee] bg-[#153156] px-3 py-2 font-normal text-white opacity-0 shadow-lg shadow-black/10 transition group-hover:opacity-100 group-focus-within:opacity-100">
         {text}
       </span>
     </span>

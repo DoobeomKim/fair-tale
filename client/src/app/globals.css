@@ -25,6 +25,47 @@
   --background: #f7f9fc;
   --foreground: #153156;
   --font-title-korean: "GyeongbokgungSumunjangTitle", "Chiron Sung HK", Pretendard, "Noto Sans KR", sans-serif;
+
+  /* Fairtale design tokens */
+  --ft-color-navy: #153156;
+  --ft-color-navy-hover: #102746;
+  --ft-color-teal: #12978b;
+  --ft-color-teal-dark: #0e7d73;
+  --ft-color-mint: #e6f8f4;
+  --ft-color-bg: #f7f9fc;
+  --ft-color-border: #dfe5ee;
+  --ft-color-border-mint: #d7ece9;
+  --ft-color-text-muted: #536176;
+  --ft-color-text-soft: #8a96a8;
+
+  --ft-text-caption: 12px;
+  --ft-leading-caption: 1.4;
+  --ft-text-small: 14px;
+  --ft-leading-small: 1.55;
+  --ft-text-body: 16px;
+  --ft-leading-body: 1.65;
+  --ft-text-body-large: 18px;
+  --ft-leading-body-large: 1.7;
+  --ft-text-card: 18px;
+  --ft-leading-card: 1.45;
+  --ft-text-panel: 24px;
+  --ft-leading-panel: 1.3;
+  --ft-text-section: 36px;
+  --ft-leading-section: 1.22;
+  --ft-text-hero-mobile: clamp(34px, 9vw, 39px);
+  --ft-text-hero: 46px;
+  --ft-leading-hero: 1.18;
+
+  --ft-radius-control: 6px;
+  --ft-radius-card: 12px;
+  --ft-radius-panel: 24px;
+  --ft-radius-shell: 28px;
+  --ft-radius-pill: 999px;
+
+  --ft-shadow-card: 0 14px 36px rgba(21, 49, 86, 0.06);
+  --ft-shadow-panel: 0 22px 70px rgba(21, 49, 86, 0.08);
+  --ft-shadow-glass: 0 28px 90px rgba(21, 49, 86, 0.12);
+  --ft-shadow-cta: 0 18px 36px rgba(21, 49, 86, 0.18);
 }
 
 @theme inline {
@@ -47,6 +88,73 @@ body {
 .title-korean {
   font-family: var(--font-title-korean);
   font-weight: 700;
+  letter-spacing: 0;
+}
+
+.ft-hero-title {
+  font-family: var(--font-title-korean);
+  font-size: var(--ft-text-hero-mobile);
+  font-weight: 700;
+  line-height: var(--ft-leading-hero);
+  letter-spacing: 0;
+}
+
+.ft-section-title {
+  font-family: var(--font-title-korean);
+  font-size: var(--ft-text-section);
+  font-weight: 700;
+  line-height: var(--ft-leading-section);
+  letter-spacing: 0;
+}
+
+.ft-panel-title {
+  font-size: var(--ft-text-panel);
+  font-weight: 600;
+  line-height: var(--ft-leading-panel);
+}
+
+.ft-card-title {
+  font-size: var(--ft-text-card);
+  font-weight: 600;
+  line-height: var(--ft-leading-card);
+}
+
+.ft-body-large {
+  font-size: var(--ft-text-body-large);
+  line-height: var(--ft-leading-body-large);
+}
+
+.ft-body {
+  font-size: var(--ft-text-body);
+  line-height: var(--ft-leading-body);
+}
+
+.ft-small {
+  font-size: var(--ft-text-small);
+  line-height: var(--ft-leading-small);
+}
+
+.ft-caption {
+  font-size: var(--ft-text-caption);
+  line-height: var(--ft-leading-caption);
+}
+
+.ft-eyebrow {
+  font-size: var(--ft-text-small);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.ft-report-text {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (min-width: 1024px) {
+  .ft-hero-title {
+    font-size: var(--ft-text-hero);
+  }
 }
 
 .shine-button {
@@ -69,8 +177,85 @@ body {
   z-index: 1;
 }
 
+.active-report-section {
+  animation: report-section-breathe 2.8s ease-in-out infinite;
+}
+
+.active-report-section::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background:
+    linear-gradient(105deg, transparent 8%, rgba(255, 255, 255, 0.78) 42%, transparent 70%),
+    radial-gradient(circle at 18% 50%, rgba(18, 151, 139, 0.18), transparent 46%);
+  opacity: 0;
+  transform: translateX(-46%);
+  animation: report-section-sheen 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.review-step-card {
+  display: flex;
+  min-height: 178px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.review-step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (hover: hover) {
   .shine-button:hover::before {
     transform: translateX(120%);
+  }
+}
+
+@media (max-width: 767px) {
+  .review-step-card {
+    min-height: 132px;
+  }
+}
+
+@keyframes report-section-breathe {
+  0%,
+  100% {
+    border-color: rgba(18, 151, 139, 0.24);
+    box-shadow: 0 1px 2px rgba(21, 49, 86, 0.06);
+  }
+
+  48% {
+    border-color: rgba(18, 151, 139, 0.42);
+    box-shadow:
+      0 10px 26px rgba(18, 151, 139, 0.13),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.62);
+  }
+}
+
+@keyframes report-section-sheen {
+  0%,
+  24% {
+    opacity: 0;
+    transform: translateX(-52%);
+  }
+
+  48% {
+    opacity: 0.72;
+  }
+
+  78%,
+  100% {
+    opacity: 0;
+    transform: translateX(42%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .active-report-section,
+  .active-report-section::before {
+    animation: none;
   }
 }
